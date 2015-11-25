@@ -62,7 +62,7 @@ if [ ! -d /mnt/backups/$efsid ]; then
   sudo chmod 700 /mnt/backups/$efsid
 fi
 if [ ! -d /mnt/backups/efsbackup-logs ]; then
-  echo "sudo mkdir -p /mnt/backups/efs-backuplogs"
+  echo "sudo mkdir -p /mnt/backups/efsbackup-logs"
   sudo mkdir -p /mnt/backups/efsbackup-logs
   echo "sudo chmod 700 /mnt/backups/efsbackup-logs"
   sudo chmod 700 /mnt/backups/efsbackup-logs
