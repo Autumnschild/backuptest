@@ -26,10 +26,10 @@ if [ ! -d /mnt/backups ]; then
   sudo mount -t nfs $destination /mnt/backups
 fi
 
-#if [ ! -f /tmp/efs-backup.log ]; then
-#  echo "sudo rm /tmp/efs-backup.log"
-#  sudo rm /tmp/efs-backup.log
-#fi
+if [ ! -f /tmp/efs-backup.log ]; then
+  echo "sudo rm /tmp/efs-backup.log"
+  sudo rm /tmp/efs-backup.log
+fi
 
 #Copy all content this node is responsible for
 for myContent in `ls -a --ignore . --ignore .. /backup/ | awk 'NR%'$numClients==$clientNum`; do
