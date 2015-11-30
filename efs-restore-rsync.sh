@@ -37,6 +37,8 @@ for myContent in `ls -a --ignore . --ignore .. /mnt/backups/$efsid/$interval.$ba
   sudo rsync -ah --stats --delete --numeric-ids --log-file=/tmp/efs-restore.log /mnt/backups/$efsid/$interval.$backupNum/$myContent /backup/
   rsyncStatus=$?
 done
+if [ -f /tmp/efs-restore.log ]; then
 echo "sudo cp /tmp/efs-restore.log /mnt/backups/efsbackup-logs/$efsid-$interval.$backupNum-restore-$clientNum.$numClients-`date +%Y%m%d-%H%M`.log"
 sudo cp /tmp/efs-restore.log /mnt/backups/efsbackup-logs/$efsid-$interval.$backupNum-restore-$clientNum.$numClients-`date +%Y%m%d-%H%M`.log
+fi
 exit $rsyncStatus
