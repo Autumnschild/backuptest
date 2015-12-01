@@ -13,6 +13,10 @@ numClients=$7
 # Prepare system for rsync
 echo 'sudo yum -y install nfs-utils'
 sudo yum -y install nfs-utils
+
+echo "sudo su"
+sudo su
+
 if [ ! -d /backup ]; then
   echo 'sudo mkdir /backup'
   sudo mkdir /backup
@@ -38,10 +42,8 @@ for myContent in `ls -a --ignore . --ignore .. /mnt/backups/$efsid/$interval.$ba
   rsyncStatus=$?
 done
 if [ -f /tmp/efs-restore.log ]; then
-echo "sudo su"
-sudo su
 echo "sudo cp /tmp/efs-restore.log /mnt/backups/efsbackup-logs/$efsid-$interval.$backupNum-restore-$clientNum.$numClients-`date +%Y%m%d-%H%M`.log"
 sudo cp /tmp/efs-restore.log /mnt/backups/efsbackup-logs/$efsid-$interval.$backupNum-restore-$clientNum.$numClients-`date +%Y%m%d-%H%M`.log
-exit
 fi
 exit $rsyncStatus
+exit
